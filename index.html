@@ -35,8 +35,8 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 500px;
-            height: 350px;
+            max-width: 450px;
+            height: 300px;
             margin: 0 auto;
         }
         
@@ -61,12 +61,14 @@
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        .img-container img {
+            max-width: 100%;
+            max-height: 280px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
     </style>
-    <!-- Chosen Palette: Warm Neutrals -->
-    <!-- Application Structure Plan: 
-         Updated to include DJI Mic Mini to optimize budget.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
 <body class="bg-brand-50 text-gray-800 font-sans min-h-screen flex flex-col">
 
@@ -75,11 +77,11 @@
         <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
             <div>
                 <h1 class="text-2xl font-bold text-brand-900">🎥 Equipamiento Biblioteca</h1>
-                <p class="text-sm text-gray-500">Versión Optimizada (DJI Mic Mini)</p>
+                <p class="text-sm text-gray-500">Kit de Producción de Video Escolar</p>
             </div>
             <div class="mt-4 md:mt-0 text-right">
-                <span class="block text-xs uppercase tracking-wide text-gray-400 font-semibold">Inversión Total Estimada</span>
-                <span class="text-2xl font-bold text-brand-700" id="total-budget-display">$13,700 MXN</span>
+                <span class="block text-xs uppercase tracking-wide text-gray-400 font-semibold">Presupuesto Estimado</span>
+                <span class="text-2xl font-bold text-brand-700" id="total-budget-display">$0 MXN</span>
             </div>
         </div>
     </header>
@@ -88,18 +90,17 @@
 
         <!-- Intro Section -->
         <section class="bg-white rounded-xl shadow-sm p-6 border border-brand-100">
-            <h2 class="text-xl font-semibold text-brand-900 mb-2">Objetivo del Proyecto</h2>
+            <h2 class="text-xl font-semibold text-brand-900 mb-2">Resumen de Propuesta</h2>
             <p class="text-gray-600 leading-relaxed">
-                Esta propuesta ha sido ajustada para maximizar el ahorro mediante el uso del nuevo sistema <strong>DJI Mic Mini</strong>. 
-                Mantenemos la calidad profesional en video y audio, pero reducimos la inversión inicial en más de un 20% comparado con la propuesta anterior.
+                Selección de equipo optimizado para la creación de contenido en la biblioteca. Este kit prioriza la facilidad de uso para alumnos y la durabilidad de los componentes, asegurando una excelente calidad de audio y video con los mejores precios de Amazon México.
             </p>
         </section>
 
         <!-- Interactive Kit Explorer -->
         <section>
             <div class="mb-6">
-                <h2 class="text-2xl font-bold text-brand-900">Explorador del Kit</h2>
-                <p class="text-gray-600">Selecciona un componente para ver por qué fue elegido y sus especificaciones.</p>
+                <h2 class="text-2xl font-bold text-brand-900">Detalle del Equipo</h2>
+                <p class="text-gray-600">Explora las especificaciones técnicas de cada componente.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -118,52 +119,35 @@
 
         <!-- Financial Analysis Section -->
         <section class="bg-white rounded-xl shadow-sm p-6 border border-brand-100">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h2 class="text-xl font-semibold text-brand-900 mb-4">Distribución del Presupuesto</h2>
-                    <p class="text-gray-600 mb-4">
-                        Con el cambio a <strong>DJI Mic Mini</strong>, la cámara representa ahora la mayor parte de la inversión. 
-                        Este equilibrio es ideal para una biblioteca que prioriza la durabilidad de la imagen.
-                    </p>
-                    <div class="bg-brand-50 p-4 rounded-lg border border-brand-200">
-                        <h3 class="font-bold text-brand-900 mb-2">Ahorro Generado:</h3>
-                        <ul class="space-y-2 text-sm text-gray-700">
-                            <li>• Ahorro en audio: <strong>~$4,000 MXN</strong></li>
-                            <li>• Margen para otros gastos: <strong>~$5,300 MXN</strong> (respecto al tope de $19k)</li>
-                            <li>• Estado: Altamente eficiente.</li>
-                        </ul>
-                    </div>
+            <div class="flex flex-col items-center">
+                <h2 class="text-xl font-semibold text-brand-900 mb-6">Distribución del Presupuesto</h2>
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
                 </div>
-                
-                <div class="flex flex-col items-center justify-center">
-                    <div class="chart-container">
-                        <canvas id="budgetChart"></canvas>
-                    </div>
-                    <p class="text-xs text-gray-400 mt-2 text-center">Costos optimizados (Amazon México)</p>
-                </div>
+                <p class="text-xs text-gray-400 mt-6 text-center uppercase tracking-widest">Inversión porcentual por categoría de producto</p>
             </div>
         </section>
 
         <!-- Detailed Purchase Table -->
         <section class="pb-12">
-            <h2 class="text-xl font-semibold text-brand-900 mb-4">Lista de Compra Detallada</h2>
+            <h2 class="text-xl font-semibold text-brand-900 mb-4">Lista de Adquisición</h2>
             <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-brand-100">
                 <table class="w-full text-left text-sm text-gray-600">
                     <thead class="bg-brand-50 text-brand-900 uppercase font-bold text-xs">
                         <tr>
                             <th class="px-6 py-4 rounded-tl-xl">Producto</th>
                             <th class="px-6 py-4 text-center">Cant.</th>
-                            <th class="px-6 py-4 text-right">Precio Unit. Est.</th>
-                            <th class="px-6 py-4 text-right rounded-tr-xl">Acción</th>
+                            <th class="px-6 py-4 text-right">Total Est.</th>
+                            <th class="px-6 py-4 text-right rounded-tr-xl">Enlace</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-brand-100" id="purchase-table-body">
                     </tbody>
                     <tfoot class="bg-brand-50 font-bold text-brand-900">
                         <tr>
-                            <td class="px-6 py-4">Total Optimizado</td>
+                            <td class="px-6 py-4">Inversión Total</td>
                             <td class="px-6 py-4 text-center"></td>
-                            <td class="px-6 py-4 text-right" id="table-total-display">$0</td>
+                            <td class="px-6 py-4 text-right text-lg" id="table-total-display">$0</td>
                             <td class="px-6 py-4"></td>
                         </tr>
                     </tfoot>
@@ -174,7 +158,8 @@
     </main>
 
     <footer class="bg-brand-900 text-brand-100 py-8 text-center text-sm">
-        <p>Versión de Presupuesto Optimizado para Biblioteca Escolar</p>
+        <p>Propuesta Audiovisual - Biblioteca Escolar</p>
+        <p class="mt-2 text-xs text-brand-300">Links e imágenes actualizados de Amazon México</p>
     </footer>
 
     <script>
@@ -184,65 +169,60 @@
                 name: "DJI Osmo Action 4 (Combo Estándar)",
                 category: "Cámara",
                 icon: "📹",
-                price: 6200,
+                price: 5299,
                 qty: 1,
-                description: "Cámara 4K ultra resistente con estabilización y pantalla frontal.",
-                reason: "Mantiene la calidad visual 4K. Es el componente más duradero del kit.",
-                link: "https://www.amazon.com.mx/dp/B0C997C6P7",
-                image: "https://m.media-amazon.com/images/I/61mO-p+o9zL._AC_SL1500_.jpg",
-                specs: ["4K Video", "RockSteady 3.0", "Pantalla Táctil Color", "Montaje Magnético"]
+                description: "Cámara de acción 4K con sensor de 1/1.3 pulgadas, ideal para grabaciones de alta calidad en biblioteca.",
+                link: "https://www.amazon.com.mx/DJI-Pack-Esencial-Osmo-Action/dp/B0DS2B3P2B/",
+                image: "https://m.media-amazon.com/images/I/71yy0R84-lL._AC_SL1500_.jpg",
+                specs: ["Sensor CMOS 1/1.3\"", "Grabación 4K/120fps", "D-Log M de 10 bits", "HorizonSteady 360°"]
             },
             {
                 id: 2,
                 name: "DJI Mic Mini (2 TX + 1 RX)",
                 category: "Audio",
                 icon: "🎙️",
-                price: 3200,
+                price: 3399,
                 qty: 1,
-                description: "Sistema de audio inalámbrico ultra ligero y compacto.",
-                reason: "Ahorra $4,000 MXN manteniendo la tecnología DJI. Es más discreto y ligero para los alumnos.",
-                link: "https://www.amazon.com.mx/s?k=DJI+Mic+Mini+wireless",
-                image: "https://m.media-amazon.com/images/I/51pSizk9l5L._AC_SL1500_.jpg",
-                specs: ["Ultra Ligero", "48kHz/24-bit", "Cancelación de Ruido", "Conexión Bluetooth/Directa"]
+                description: "Sistema de micrófono inalámbrico ultraligero con cancelación de ruido activa.",
+                link: "https://www.amazon.com.mx/DJI-superligero-cancelaci%C3%B3n-micr%C3%B3fono-inal%C3%A1mbrico/dp/B0DDL8WGH5/",
+                image: "https://m.media-amazon.com/images/I/61l6NdcbuqL._AC_SX679_.jpg",
+                specs: ["Peso de solo 10g", "48 kHz/24 bits", "Cancelación de ruido activa", "40m alcance Bluetooth"]
             },
             {
                 id: 3,
-                name: "Kit Luces LED Portátiles",
-                category: "Iluminación",
+                name: "Neewer Kit Iluminación LED (2 Pack)",
+                category: "Luz",
                 icon: "💡",
-                price: 2500,
+                price: 2163,
                 qty: 1,
-                description: "Dos paneles LED con tripies ajustables.",
-                reason: "Fundamental para evitar el aspecto 'oscuro' de las grabaciones en interiores.",
-                link: "https://www.amazon.com.mx/dp/B07YFY7H7L",
-                image: "https://m.media-amazon.com/images/I/71uV6tN6B8L._AC_SL1500_.jpg",
-                specs: ["Carga USB/AC", "Bicolor", "Tripies de 1.2m", "Filtros de Color"]
+                description: "Paneles LED bicolores regulables con soporte para iluminación de estudio profesional.",
+                link: "https://www.amazon.com.mx/Neewer-Unidades-Bi-color-Regulable-Soporte/dp/B072Q42GXQ/",
+                image: "https://m.media-amazon.com/images/I/71H5ba4afyL._AC_SX679_.jpg",
+                specs: ["480 bombillas LED", "Temperatura 3200-5600K", "Soportes ajustables de 1.9m", "Estuche de transporte"]
             },
             {
                 id: 4,
-                name: "Tripie Híbrido 1.5m",
-                category: "Estabilidad",
+                name: "Soporte Trípode DJI Osmo Pocket/Mobile",
+                category: "Soporte",
                 icon: "📐",
-                price: 800,
+                price: 599,
                 qty: 1,
-                description: "Soporte estable para cámara y smartphone.",
-                reason: "Económico y funcional para tomas estáticas de entrevistas.",
-                link: "https://www.amazon.com.mx/dp/B08V1S6N85",
-                image: "https://m.media-amazon.com/images/I/61KpxD7hPML._AC_SL1500_.jpg",
-                specs: ["Aluminio", "Cabezal de 3 vías", "Fácil de plegar", "Soporte Celular"]
+                description: "Mini trípode original DJI, compacto y estable para tomas de escritorio o fijas.",
+                link: "https://www.amazon.com.mx/Osmo-Mobile-Soporte-tr%C3%ADpode-Mobile-Osmo-Pocket/dp/B0F8Q4MH8V/",
+                image: "https://m.media-amazon.com/images/I/6173SxHrpsL._AC_SX679_.jpg",
+                specs: ["Diseño oficial DJI", "Patas antideslizantes", "Cierre magnético", "Compacto para transporte"]
             },
             {
                 id: 5,
-                name: "Memoria MicroSD 128GB (x2)",
-                category: "Almacenamiento",
+                name: "SanDisk Extreme Pro 128GB",
+                category: "Memoria",
                 icon: "💾",
-                price: 500,
+                price: 489,
                 qty: 2,
-                description: "Tarjetas SanDisk Extreme de alta velocidad.",
-                reason: "Permite tener una memoria en uso y otra libre para descarga de material.",
-                link: "https://www.amazon.com.mx/dp/B07FCMKK5X",
-                image: "https://m.media-amazon.com/images/I/617pZ6068SL._AC_SL1500_.jpg",
-                specs: ["128 GB", "Video V30", "A2 Rating", "Protección de datos"]
+                description: "Tarjeta MicroSDXC optimizada para video 4K UHD con altas velocidades de escritura.",
+                link: "https://www.amazon.com.mx/SanDisk-microSDXC-Adaptador-RescuePRO-Performance/dp/B09X7CRKRZ/",
+                image: "https://m.media-amazon.com/images/I/71H5ba4afyL._AC_SX679_.jpg",
+                specs: ["Velocidad hasta 200MB/s", "Clase de video V30", "Clase de rendimiento A2", "Incluye adaptador SD"]
             }
         ];
 
@@ -286,24 +266,38 @@
         function renderDetailPanel() {
             const product = products[selectedProductIndex];
             const totalPrice = product.price * product.qty;
-            const specsHtml = product.specs.map(spec => `<span class="inline-block bg-brand-100 text-brand-900 text-xs px-2 py-1 rounded-full font-medium mr-2 mb-2">${spec}</span>`).join('');
+            const specsHtml = product.specs.map(spec => `
+                <li class="flex items-start space-x-2 text-gray-600 text-sm py-1">
+                    <span class="text-brand-500 mt-1">●</span>
+                    <span>${spec}</span>
+                </li>
+            `).join('');
 
             detailPanel.innerHTML = `
                 <div class="fade-in h-full flex flex-col md:flex-row">
-                    <div class="md:w-1/2 bg-gray-50 p-6 flex items-center justify-center border-b md:border-b-0 md:border-r border-brand-100 relative">
-                        <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full shadow-sm text-xs font-bold text-gray-500 border border-gray-100">Cant: ${product.qty}</div>
-                        <img src="${product.image}" alt="${product.name}" class="max-h-64 object-contain mix-blend-multiply hover:scale-105 transition-transform duration-300">
+                    <div class="md:w-1/2 bg-gray-50 p-6 flex items-center justify-center border-b md:border-b-0 md:border-r border-brand-100 img-container">
+                        <img src="${product.image}" alt="Imagen de ${product.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Cargando...'">
                     </div>
                     <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto">
                         <div>
-                            <div class="flex items-center justify-between mb-2"><span class="text-brand-500 font-bold uppercase tracking-wider text-xs">${product.category}</span><span class="text-2xl">${product.icon}</span></div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4 leading-tight">${product.name}</h3>
-                            <div class="mb-6"><h4 class="text-sm font-bold text-gray-700 mb-1">Impacto Presupuestario:</h4><p class="text-gray-600 text-sm italic border-l-2 border-brand-300 pl-3">"${product.reason}"</p></div>
-                            <div class="mb-6"><h4 class="text-sm font-bold text-gray-700 mb-2">Características:</h4><div class="flex flex-wrap">${specsHtml}</div></div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-brand-500 font-bold uppercase tracking-wider text-xs">${product.category}</span>
+                                <span class="text-2xl">${product.icon}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">${product.name}</h3>
+                            <p class="text-gray-500 text-sm mb-6">${product.description}</p>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Características Técnicas</h4>
+                                <ul class="space-y-1">${specsHtml}</ul>
+                            </div>
                         </div>
                         <div class="pt-6 border-t border-gray-100">
-                            <div class="flex items-end justify-between mb-4"><span class="text-gray-500 text-sm">Costo Subtotal</span><span class="text-3xl font-bold text-brand-700">${formatMoney(totalPrice)}</span></div>
-                            <a href="${product.link}" target="_blank" class="block w-full text-center bg-brand-700 hover:bg-brand-900 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-lg">Comprar en Amazon ↗</a>
+                            <div class="flex items-end justify-between mb-4">
+                                <span class="text-gray-500 text-sm font-medium">Inversión Subtotal</span>
+                                <span class="text-3xl font-bold text-brand-700">${formatMoney(totalPrice)}</span>
+                            </div>
+                            <a href="${product.link}" target="_blank" class="block w-full text-center bg-brand-700 hover:bg-brand-900 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-lg">Ver en Amazon ↗</a>
                         </div>
                     </div>
                 </div>`;
@@ -317,7 +311,18 @@
                 grandTotal += total;
                 const row = document.createElement('tr');
                 row.className = "hover:bg-brand-50 transition-colors";
-                row.innerHTML = `<td class="px-6 py-4"><div class="font-medium text-gray-900">${product.name}</div><div class="text-xs text-gray-500">${product.category}</div></td><td class="px-6 py-4 text-center"><span class="bg-gray-100 text-gray-800 text-xs font-bold px-2 py-1 rounded">${product.qty}</span></td><td class="px-6 py-4 text-right font-medium text-gray-700">${formatMoney(total)}</td><td class="px-6 py-4 text-right"><a href="${product.link}" target="_blank" class="text-brand-700 font-bold underline">Link</a></td>`;
+                row.innerHTML = `
+                    <td class="px-6 py-4">
+                        <div class="font-medium text-gray-900">${product.name}</div>
+                        <div class="text-xs text-gray-400 font-bold uppercase">${product.category}</div>
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                        <span class="bg-gray-100 text-gray-800 text-xs font-bold px-2 py-1 rounded">${product.qty}</span>
+                    </td>
+                    <td class="px-6 py-4 text-right font-medium text-gray-700">${formatMoney(total)}</td>
+                    <td class="px-6 py-4 text-right">
+                        <a href="${product.link}" target="_blank" class="text-brand-700 hover:text-brand-900 font-bold text-xs uppercase tracking-tighter underline">Enlace Directo</a>
+                    </td>`;
                 purchaseTableBody.appendChild(row);
             });
             const formattedTotal = formatMoney(grandTotal);
@@ -327,6 +332,7 @@
 
         function initChart() {
             const data = products.map(p => p.price * p.qty);
+            if(chartInstance) chartInstance.destroy();
             chartInstance = new Chart(budgetChartCtx, {
                 type: 'doughnut',
                 data: {
@@ -334,10 +340,32 @@
                     datasets: [{
                         data: data,
                         backgroundColor: ['#5c4d3c', '#a68a6d', '#e0cbb8', '#d1d5db', '#9ca3af'],
-                        borderWidth: 0
+                        hoverOffset: 15,
+                        borderWidth: 4,
+                        borderColor: '#ffffff'
                     }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+                options: { 
+                    responsive: true, 
+                    maintainAspectRatio: false, 
+                    plugins: { 
+                        legend: { 
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: { size: 12, family: 'Segoe UI' }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ' ' + context.label + ': ' + formatMoney(context.raw);
+                                }
+                            }
+                        }
+                    },
+                    cutout: '70%'
+                }
             });
         }
 
