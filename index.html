@@ -23,9 +23,6 @@
                             700: '#5c4d3c',
                             900: '#3d3228',
                         }
-                    },
-                    fontFamily: {
-                        sans: ['Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
                     }
                 }
             }
@@ -39,348 +36,210 @@
             height: 300px;
             margin: 0 auto;
         }
-        
         .product-card-active {
             border-left: 4px solid #a68a6d;
             background-color: #f7f3ef;
         }
-        
-        .product-card-inactive {
-            border-left: 4px solid transparent;
-        }
-
-        .product-card-inactive:hover {
-            background-color: #fcfaf8;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .img-container img {
             max-width: 100%;
             max-height: 280px;
             object-fit: contain;
-            mix-blend-mode: multiply;
+            border-radius: 8px;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="bg-brand-50 text-gray-800 font-sans min-h-screen flex flex-col">
+<body class="bg-brand-50 text-gray-800 min-h-screen flex flex-col">
 
-    <!-- Navbar / Header -->
     <header class="bg-white shadow-sm sticky top-0 z-10">
         <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
             <div>
                 <h1 class="text-2xl font-bold text-brand-900">🎥 Equipamiento Biblioteca</h1>
-                <p class="text-sm text-gray-500">Kit de Producción de Video Escolar</p>
+                <p class="text-sm text-gray-500">Kit Pro Actualizado (Action 5 Pro)</p>
             </div>
             <div class="mt-4 md:mt-0 text-right">
-                <span class="block text-xs uppercase tracking-wide text-gray-400 font-semibold">Presupuesto Estimado</span>
-                <span class="text-2xl font-bold text-brand-700" id="total-budget-display">$0 MXN</span>
+                <span class="block text-xs uppercase tracking-wide text-gray-400 font-semibold">Inversión Total</span>
+                <span class="text-2xl font-bold text-brand-700" id="total-budget-display">$0.00 MXN</span>
             </div>
         </div>
     </header>
 
     <main class="flex-grow max-w-6xl mx-auto px-4 py-8 w-full space-y-12">
-
-        <!-- Sección de Introducción -->
-        <section class="bg-white rounded-xl shadow-sm p-6 border border-brand-100">
-            <h2 class="text-xl font-semibold text-brand-900 mb-2">Resumen de Propuesta</h2>
-            <p class="text-gray-600 leading-relaxed">
-                Selección de equipo optimizado para la creación de contenido en la biblioteca. Esta lista ha sido actualizada con los precios vigentes para garantizar la precisión del presupuesto final.
-            </p>
-        </section>
-
         <!-- Explorador Interactivo -->
         <section>
-            <div class="mb-6">
-                <h2 class="text-2xl font-bold text-brand-900">Detalle del Equipo</h2>
-                <p class="text-gray-600">Precios sincronizados con la última actualización de Amazon México.</p>
-            </div>
-
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                
-                <!-- Izquierda: Lista de Componentes -->
-                <div class="lg:col-span-4 flex flex-col space-y-3" id="product-list-container">
-                </div>
-
-                <!-- Derecha: Vista de Detalle -->
+                <!-- Lista -->
+                <div class="lg:col-span-4 flex flex-col space-y-3" id="product-list-container"></div>
+                <!-- Detalle -->
                 <div class="lg:col-span-8">
-                    <div id="detail-panel" class="bg-white rounded-xl shadow-lg border border-brand-100 overflow-hidden h-full flex flex-col">
-                    </div>
+                    <div id="detail-panel" class="bg-white rounded-xl shadow-lg border border-brand-100 overflow-hidden h-full flex flex-col"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Análisis Financiero -->
+        <!-- Gráfico -->
         <section class="bg-white rounded-xl shadow-sm p-6 border border-brand-100">
-            <div class="flex flex-col items-center">
-                <h2 class="text-xl font-semibold text-brand-900 mb-6">Distribución del Presupuesto</h2>
-                <div class="chart-container">
-                    <canvas id="budgetChart"></canvas>
-                </div>
-                <p class="text-xs text-gray-400 mt-6 text-center uppercase tracking-widest">Inversión porcentual basada en precios actualizados</p>
+            <h2 class="text-xl font-semibold text-brand-900 mb-6 text-center">Distribución del Presupuesto</h2>
+            <div class="chart-container">
+                <canvas id="budgetChart"></canvas>
             </div>
         </section>
 
-        <!-- Tabla de Adquisición Detallada -->
+        <!-- Tabla -->
         <section class="pb-12">
-            <h2 class="text-xl font-semibold text-brand-900 mb-4">Lista de Adquisición</h2>
             <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-brand-100">
-                <table class="w-full text-left text-sm text-gray-600">
+                <table class="w-full text-left text-sm">
                     <thead class="bg-brand-50 text-brand-900 uppercase font-bold text-xs">
                         <tr>
-                            <th class="px-6 py-4 rounded-tl-xl">Producto</th>
-                            <th class="px-6 py-4 text-center">Cant.</th>
-                            <th class="px-6 py-4 text-right">Total Est.</th>
-                            <th class="px-6 py-4 text-right rounded-tr-xl">Enlace</th>
+                            <th class="px-6 py-4">Producto</th>
+                            <th class="px-6 py-4 text-right">Precio Unitario</th>
+                            <th class="px-6 py-4 text-right">Enlace</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-brand-100" id="purchase-table-body">
-                    </tbody>
-                    <tfoot class="bg-brand-50 font-bold text-brand-900">
-                        <tr>
-                            <td class="px-6 py-4">Inversión Total</td>
-                            <td class="px-6 py-4 text-center"></td>
-                            <td class="px-6 py-4 text-right text-lg" id="table-total-display">$0</td>
-                            <td class="px-6 py-4"></td>
-                        </tr>
-                    </tfoot>
+                    <tbody class="divide-y divide-brand-100" id="purchase-table-body"></tbody>
                 </table>
             </div>
         </section>
-
     </main>
-
-    <footer class="bg-brand-900 text-brand-100 py-8 text-center text-sm">
-        <p>Propuesta Audiovisual - Biblioteca Escolar</p>
-        <p class="mt-2 text-xs text-brand-300">Precios finales actualizados: Action 4 ($4,528.99), Mic Mini ($1,809), LED ($2,159), Trípode ($542.37), SD ($1,094.36)</p>
-    </footer>
 
     <script>
         const products = [
             {
-                id: 1,
-                name: "DJI Osmo Action 4 (Combo Estándar)",
+                name: "DJI Osmo Action 5 Pro",
                 category: "Cámara",
+                price: 6310.85,
                 icon: "📹",
-                price: 4528.99,
-                qty: 1,
-                description: "Cámara de acción 4K con sensor de 1/1.3 pulgadas, ideal para grabaciones de alta calidad en biblioteca.",
-                link: "https://www.amazon.com.mx/DJI-Pack-Esencial-Osmo-Action/dp/B0DS2B3P2B/",
-                image: "https://m.media-amazon.com/images/I/71yy0R84-lL._AC_SL1500_.jpg",
-                specs: ["Sensor CMOS 1/1.3\"", "Grabación 4K/120fps", "D-Log M de 10 bits", "HorizonSteady 360°"]
+                description: "Cámara insignia de DJI con sensor de 1/1.3 pulgadas y rango dinámico de 13.5 pasos. Ideal para grabaciones de alta calidad en cualquier condición de luz.",
+                link: "https://www.amazon.com.mx/DJI-Osmo-Action-Pro-estabilizaci%C3%B3n/dp/B0D1YH4B2R/",
+                image: "https://m.media-amazon.com/images/I/71EJztia1eL._AC_SL1500_.jpg",
+                specs: ["Video 4K/120fps", "Pantallas OLED Duales", "47GB Memoria Interna", "Sensor de última generación"]
             },
             {
-                id: 2,
                 name: "DJI Mic Mini (2 TX + 1 RX)",
                 category: "Audio",
-                icon: "🎙️",
                 price: 1809.00,
-                qty: 1,
-                description: "Sistema de micrófono inalámbrico ultraligero con cancelación de ruido activa.",
+                icon: "🎙️",
+                description: "Sistema inalámbrico ultraligero para un sonido profesional sin cables estorbosos.",
                 link: "https://www.amazon.com.mx/DJI-superligero-cancelaci%C3%B3n-micr%C3%B3fono-inal%C3%A1mbrico/dp/B0DDL8WGH5/",
                 image: "https://m.media-amazon.com/images/I/61l6NdcbuqL._AC_SX679_.jpg",
-                specs: ["Peso de solo 10g", "48 kHz/24 bits", "Cancelación de ruido activa", "40m alcance Bluetooth"]
+                specs: ["Cancelación de Ruido Activa", "48 kHz/24 bits", "Alcance hasta 40m", "Clip Magnético"]
             },
             {
-                id: 3,
-                name: "Neewer Kit Iluminación LED (2 Pack)",
+                name: "Neewer Kit LED (2 Pack)",
                 category: "Luz",
-                icon: "💡",
                 price: 2159.00,
-                qty: 1,
-                description: "Paneles LED bicolores regulables con soporte para iluminación de estudio profesional.",
+                icon: "💡",
+                description: "Set de iluminación bicolor regulable esencial para evitar sombras en grabaciones interiores.",
                 link: "https://www.amazon.com.mx/Neewer-Unidades-Bi-color-Regulable-Soporte/dp/B072Q42GXQ/",
                 image: "https://m.media-amazon.com/images/I/71H5ba4afyL._AC_SX679_.jpg",
-                specs: ["480 bombillas LED", "Temperatura 3200-5600K", "Soportes ajustables de 1.9m", "Estuche de transporte"]
+                specs: ["Temperatura 3200-5600K", "CRI 96+", "Soportes de 1.9m", "Maletín Incluido"]
             },
             {
-                id: 4,
-                name: "Soporte Trípode DJI Osmo Pocket/Mobile",
+                name: "Soporte Trípode DJI",
                 category: "Soporte",
-                icon: "📐",
                 price: 542.37,
-                qty: 1,
-                description: "Mini trípode original DJI, compacto y estable para tomas de escritorio o fijas.",
+                icon: "📐",
+                description: "Soporte plegable original para máxima estabilidad en tomas de escritorio.",
                 link: "https://www.amazon.com.mx/Osmo-Mobile-Soporte-tr%C3%ADpode-Mobile-Osmo-Pocket/dp/B0F8Q4MH8V/",
                 image: "https://m.media-amazon.com/images/I/6173SxHrpsL._AC_SX679_.jpg",
-                specs: ["Design oficial DJI", "Patas antideslizantes", "Cierre magnético", "Compacto para transporte"]
+                specs: ["Construcción en Aluminio", "Base Antideslizante", "Plegado Compacto", "Original DJI"]
             },
             {
-                id: 5,
                 name: "SanDisk Extreme Pro 128GB",
                 category: "Memoria",
-                icon: "💾",
                 price: 1094.36,
-                qty: 1,
-                description: "Tarjeta MicroSDXC optimizada para video 4K UHD con altas velocidades de escritura.",
+                icon: "💾",
+                description: "Tarjeta de alta velocidad indispensable para el flujo de datos del video 4K.",
                 link: "https://www.amazon.com.mx/SanDisk-microSDXC-Adaptador-RescuePRO-Performance/dp/B09X7CRKRZ/",
-                image: "https://m.media-amazon.com/images/I/719ZXZP+5LL._AC_SY300_SX300_QL70_ML2_.jpg",
-                specs: ["Velocidad hasta 200MB/s", "Clase de video V30", "Clase de rendimiento A2", "Incluye adaptador SD"]
+                image: "https://m.media-amazon.com/images/I/71m6k4-j1fL._AC_SL1500_.jpg",
+                specs: ["Hasta 200MB/s", "Clase V30 para Video", "Resistente a Rayos X", "Adaptador SD Incluido"]
             }
         ];
 
-        const formatMoney = (amount) => {
-            return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 2 }).format(amount);
-        };
+        let selectedIdx = 0;
+        let chart = null;
 
-        let selectedProductIndex = 0;
-        let chartInstance = null;
-
-        const listContainer = document.getElementById('product-list-container');
-        const detailPanel = document.getElementById('detail-panel');
-        const purchaseTableBody = document.getElementById('purchase-table-body');
-        const tableTotalDisplay = document.getElementById('table-total-display');
-        const budgetChartCtx = document.getElementById('budgetChart');
-
-        function renderProductList() {
-            listContainer.innerHTML = '';
-            products.forEach((product, index) => {
-                const isSelected = index === selectedProductIndex;
-                const button = document.createElement('button');
-                button.className = `w-full text-left p-4 rounded-lg transition-all duration-200 flex items-center justify-between group ${isSelected ? 'product-card-active shadow-md' : 'product-card-inactive bg-white border border-transparent'}`;
-                button.onclick = () => selectProduct(index);
-
-                button.innerHTML = `
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">${product.icon}</span>
-                        <div>
-                            <p class="font-bold text-gray-800 ${isSelected ? 'text-brand-900' : ''}">${product.category}</p>
-                            <p class="text-xs text-gray-500 truncate w-32 md:w-48">${product.name}</p>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <p class="font-semibold text-brand-700 text-sm">${formatMoney(product.price * product.qty)}</p>
-                    </div>
-                `;
-                listContainer.appendChild(button);
-            });
+        function format(num) {
+            return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(num);
         }
 
-        function renderDetailPanel() {
-            const product = products[selectedProductIndex];
-            const totalPrice = product.price * product.qty;
-            const specsHtml = product.specs.map(spec => `
-                <li class="flex items-start space-x-2 text-gray-600 text-sm py-1">
-                    <span class="text-brand-500 mt-1">●</span>
-                    <span>${spec}</span>
-                </li>
-            `).join('');
+        function updateUI() {
+            const list = document.getElementById('product-list-container');
+            const table = document.getElementById('purchase-table-body');
+            let total = 0;
 
-            detailPanel.innerHTML = `
-                <div class="fade-in h-full flex flex-col md:flex-row">
-                    <div class="md:w-1/2 bg-gray-50 p-6 flex items-center justify-center border-b md:border-b-0 md:border-r border-brand-100 img-container">
-                        <img src="${product.image}" alt="Imagen de ${product.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Imagen+No+Disponible'">
+            list.innerHTML = '';
+            table.innerHTML = '';
+
+            products.forEach((p, i) => {
+                total += p.price;
+                
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-4 rounded-lg flex justify-between items-center transition-all ${i === selectedIdx ? 'product-card-active shadow-md' : 'bg-white border border-transparent'}`;
+                btn.onclick = () => { selectedIdx = i; updateUI(); };
+                btn.innerHTML = `<div><span class="text-xl mr-2">${p.icon}</span><span class="font-bold">${p.category}</span><p class="text-xs text-gray-500">${p.name.substring(0,25)}...</p></div><span class="font-bold text-brand-700">${format(p.price)}</span>`;
+                list.appendChild(btn);
+
+                const row = document.createElement('tr');
+                row.innerHTML = `<td class="px-6 py-4 font-medium">${p.name}</td><td class="px-6 py-4 text-right font-bold text-brand-700">${format(p.price)}</td><td class="px-6 py-4 text-right text-blue-600 underline text-xs"><a href="${p.link}" target="_blank">Ver Amazon</a></td>`;
+                table.appendChild(row);
+            });
+
+            document.getElementById('total-budget-display').innerText = format(total);
+            renderDetail();
+            renderChart();
+        }
+
+        function renderDetail() {
+            const p = products[selectedIdx];
+            const panel = document.getElementById('detail-panel');
+            panel.innerHTML = `
+                <div class="fade-in flex flex-col md:flex-row h-full">
+                    <div class="md:w-1/2 p-6 bg-gray-50 flex items-center justify-center img-container">
+                        <img src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/400x300?text=Imagen+no+disponible'">
                     </div>
-                    <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto">
+                    <div class="md:w-1/2 p-8 flex flex-col justify-between">
                         <div>
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-brand-500 font-bold uppercase tracking-wider text-xs">${product.category}</span>
-                                <span class="text-2xl">${product.icon}</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">${product.name}</h3>
-                            <p class="text-gray-500 text-sm mb-6">${product.description}</p>
-                            
-                            <div class="mb-6">
-                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Características Técnicas</h4>
-                                <ul class="space-y-1">${specsHtml}</ul>
-                            </div>
+                            <h2 class="text-2xl font-bold text-gray-900">${p.name}</h2>
+                            <p class="text-gray-500 mt-2 mb-6">${p.description}</p>
+                            <ul class="space-y-2">
+                                ${p.specs.map(s => `<li class="text-sm text-gray-600 flex items-center"><span class="w-2 h-2 bg-brand-500 rounded-full mr-2"></span>${s}</li>`).join('')}
+                            </ul>
                         </div>
-                        <div class="pt-6 border-t border-gray-100">
-                            <div class="flex items-end justify-between mb-4">
-                                <span class="text-gray-500 text-sm font-medium">Inversión Subtotal</span>
-                                <span class="text-3xl font-bold text-brand-700">${formatMoney(totalPrice)}</span>
+                        <div class="mt-8 border-t pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-400">Precio Amazon</span>
+                                <span class="text-3xl font-bold text-brand-700">${format(p.price)}</span>
                             </div>
-                            <a href="${product.link}" target="_blank" class="block w-full text-center bg-brand-700 hover:bg-brand-900 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-lg">Ver en Amazon ↗</a>
+                            <a href="${p.link}" target="_blank" class="block w-full bg-brand-700 text-white text-center py-3 rounded-lg font-bold hover:bg-brand-900">Ir a la tienda</a>
                         </div>
                     </div>
                 </div>`;
         }
 
-        function renderTable() {
-            let grandTotal = 0;
-            purchaseTableBody.innerHTML = '';
-            products.forEach(product => {
-                const total = product.price * product.qty;
-                grandTotal += total;
-                const row = document.createElement('tr');
-                row.className = "hover:bg-brand-50 transition-colors";
-                row.innerHTML = `
-                    <td class="px-6 py-4">
-                        <div class="font-medium text-gray-900">${product.name}</div>
-                        <div class="text-xs text-gray-400 font-bold uppercase">${product.category}</div>
-                    </td>
-                    <td class="px-6 py-4 text-center">
-                        <span class="bg-gray-100 text-gray-800 text-xs font-bold px-2 py-1 rounded">${product.qty}</span>
-                    </td>
-                    <td class="px-6 py-4 text-right font-medium text-gray-700">${formatMoney(total)}</td>
-                    <td class="px-6 py-4 text-right">
-                        <a href="${product.link}" target="_blank" class="text-brand-700 hover:text-brand-900 font-bold text-xs uppercase tracking-tighter underline">Enlace Directo</a>
-                    </td>`;
-                purchaseTableBody.appendChild(row);
-            });
-            const formattedTotal = formatMoney(grandTotal);
-            tableTotalDisplay.innerText = formattedTotal;
-            document.getElementById('total-budget-display').innerText = formattedTotal;
-        }
-
-        function initChart() {
-            const data = products.map(p => p.price * p.qty);
-            if(chartInstance) chartInstance.destroy();
-            chartInstance = new Chart(budgetChartCtx, {
+        function renderChart() {
+            const ctx = document.getElementById('budgetChart');
+            if (chart) chart.destroy();
+            chart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     labels: products.map(p => p.category),
                     datasets: [{
-                        data: data,
-                        backgroundColor: ['#5c4d3c', '#a68a6d', '#e0cbb8', '#d1d5db', '#9ca3af'],
-                        hoverOffset: 15,
-                        borderWidth: 4,
-                        borderColor: '#ffffff'
+                        data: products.map(p => p.price),
+                        backgroundColor: ['#5c4d3c', '#a68a6d', '#e0cbb8', '#d1d5db', '#9ca3af']
                     }]
                 },
-                options: { 
-                    responsive: true, 
-                    maintainAspectRatio: false, 
-                    plugins: { 
-                        legend: { 
-                            position: 'bottom',
-                            labels: {
-                                padding: 20,
-                                font: { size: 12, family: 'Segoe UI' }
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return ' ' + context.label + ': ' + formatMoney(context.raw);
-                                }
-                            }
-                        }
-                    },
-                    cutout: '70%'
-                }
+                options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
             });
         }
 
-        function selectProduct(index) {
-            selectedProductIndex = index;
-            renderProductList();
-            renderDetailPanel();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProductList();
-            renderDetailPanel();
-            renderTable();
-            initChart();
-        });
+        window.onload = updateUI;
     </script>
 </body>
 </html>
